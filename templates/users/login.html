@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>login</title>
+        <link href="{% static 'css/login.css' %}" rel="stylesheet">
+        <link href="{% static 'css/all.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+
+    </head>
+<body>
+<div class="wrapper">
+logined
+  {{ request.user.is_authenticated }}
+    <form class="login" method="POST">
+        {% csrf_token %}
+        
+      <p class="title">Log in</p>
+      <input type="text" placeholder="Username" name='username' autofocus/>
+      <span> {{ form.username.errors }}</span> 
+      <i class="fa fa-user"></i>
+      <input type="password" placeholder="Password" name='password'/>
+      <span> {{ form.password.errors }}</span> 
+
+      <i class="fa fa-key"></i>
+      <a href="#">Forgot your password?</a>
+      {{ form.errors }}
+      <button type="submit">
+        <i class="spinner"></i>
+        <span class="state">Log in</span>
+      </button>
+    </form>
+    
+    </p>
+  </div>
+</body>
